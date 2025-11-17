@@ -1,0 +1,49 @@
+version: '3.9'
+services:
+  api-gateway:
+    build: ..
+    command: uv run api-gateway
+    environment:
+      - BACKEND_SERVICE=http://backend-loans:8081
+    ports:
+      - "8000:8000"
+    depends_on:
+      - backend-loans
+
+  backend-loans:
+    build: ..
+    command: uv run backend-init
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/loans
+    ports:
+      - "8081:8081"
+    depends_on:
+      - db
+
+  worker-ingestion:
+    build: ..
+    command: uv run worker-ingestion
+    depends_on:
+      - backend-loans
+
+  frontend-app:
+    build: ./../frontend-app
+    command: npm run dev -- --host
+    ports:
+      - "5173:5173"
+    depends_on:
+      - api-gateway
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: loans
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata: {}
