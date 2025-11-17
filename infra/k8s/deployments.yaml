@@ -1,0 +1,83 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+        - name: api-gateway
+          image: ghcr.io/example/api-gateway:demo
+          ports:
+            - containerPort: 8000
+          env:
+            - name: BACKEND_SERVICE
+              value: http://backend-loans:8081
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-loans
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend-loans
+  template:
+    metadata:
+      labels:
+        app: backend-loans
+    spec:
+      containers:
+        - name: backend-loans
+          image: ghcr.io/example/backend-loans:demo
+          ports:
+            - containerPort: 8081
+          env:
+            - name: DATABASE_URL
+              value: postgresql://postgres:postgres@db:5432/loans
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worker-ingestion
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: worker-ingestion
+  template:
+    metadata:
+      labels:
+        app: worker-ingestion
+    spec:
+      containers:
+        - name: worker-ingestion
+          image: ghcr.io/example/worker-ingestion:demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend-app
+  template:
+    metadata:
+      labels:
+        app: frontend-app
+    spec:
+      containers:
+        - name: frontend-app
+          image: ghcr.io/example/frontend-app:demo
+          ports:
+            - containerPort: 5173
