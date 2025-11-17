@@ -1,0 +1,4 @@
+[console_scripts]
+api-gateway = api_gateway.main:run
+backend-init = backend_loans.services.loan_service:bootstrap
+worker-ingestion = worker_ingestion.worker:main
