@@ -1,0 +1,52 @@
+name: Checklist Validator
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  validate:
+    name: Validate checklists (advisory)
+    runs-on: ubuntu-latest
+    env:
+      # Start as advisory; set to "false" to make errors fail the job
+      ADVISORY: "true"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install minimal deps
+        run: python -m pip install --upgrade pip && pip install pyyaml
+
+      - name: Run checklist validator on changed checklist files
+        # We detect changed files and run validator only on checklist files touched by the PR.
+        run: |
+          echo "Detecting changed files..."
+          CHANGED=$(git --no-pager diff --name-only origin/${{ github.base_ref }}...HEAD || true)
+          echo "$CHANGED" > changed_files.txt
+          echo "Files changed:"
+          echo "$CHANGED"
+          # Filter only docs/checklists or explicit checklist files
+          FILES=$(echo "$CHANGED" | grep '^docs/checklists/' || true)
+          if [ -z "$FILES" ]; then
+            echo "No checklist files changed. Validating all checklists as a precaution."
+            python scripts/checklist_validator.py docs/checklists
+          else
+            echo "$FILES" > files_list.txt
+            python scripts/checklist_validator.py docs/checklists --files-list files_list.txt
+          fi
+
+      - name: Upload validator results (for review)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checklist-validator-output
+          path: |
+            changed_files.txt
+            files_list.txt || true

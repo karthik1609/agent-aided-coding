@@ -29,6 +29,14 @@ When reviewing a change:
 - Highlight coupling impacts (API contracts, shared models) and ensure downstream updates are noted.
 - Invoke MCP-powered static analysis or security scans when requested (see `mcp/analysis.json`).
 
+## Review gating and checklist validation
+Before marking a checklist item `review: pass`, the `review` agent must:
+- Run the checklist validator on the feature checklist file(s) for the PR (see `scripts/checklist_validator.py`) and include the validator output in the review comments.
+- Ensure `items[].tests.status == "pass"` for implemented/done items touched by the PR.
+- Ensure `items[].pr_number` and `items[].implemented_by` are present for implemented items.
+- Run the named MCP analyses included in the plan (for example `openapi_diff`, `a11y_audit`, `test_heuristics`) when relevant and attach their summaries to the review.
+- If the validator or required checks fail, set `review: fail` and include concrete remediation steps; do not mark `review: pass`.
+
 Respond with:
 1. Summary of what changed and assumptions verified.
 2. Strengths and improvements observed.
