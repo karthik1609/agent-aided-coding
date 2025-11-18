@@ -2,7 +2,7 @@
 name: tests
 description: Test-focused agent that improves or writes tests only.
 target: vscode
-model: GPT-5
+model: GPT-5 mini
 tools:
   - githubRepo
   - search
@@ -11,7 +11,7 @@ tools:
   - runTests
   - testFailure
   - runCommands
-  -
+  - fetch
 mcp-servers:
   - mcp/analysis.json
 argument-hint: "Tell me what code or behaviour needs test coverage…"

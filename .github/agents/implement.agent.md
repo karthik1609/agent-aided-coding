@@ -2,7 +2,7 @@
 name: implement
 description: Implementation agent that applies planned changes across services.
 target: vscode
-model: GPT-5
+model: GPT-5 mini
 tools:
   - githubRepo
   - search
@@ -11,6 +11,7 @@ tools:
   - edit
   - runCommands
   - runTests
+  - fetch
 mcp-servers:
   - mcp/analysis.json
 argument-hint: "Summarize the change you need me to implement…"

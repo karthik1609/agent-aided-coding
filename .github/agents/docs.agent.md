@@ -2,11 +2,12 @@
 name: docs
 description: Documentation agent for READMEs, architecture notes, and docs updates.
 target: vscode
-model: GPT-5
+model: GPT-5 mini
 tools:
   - githubRepo
   - search
   - edit
+  - fetch
 mcp-servers:
   - mcp/analysis.json
 argument-hint: "Describe the documentation change you need…"
