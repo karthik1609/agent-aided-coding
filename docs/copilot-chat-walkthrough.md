@@ -8,7 +8,7 @@ This playbook shows how to re-create the demo project *entirely through GitHub C
 
 - VS Code `1.106+` with GitHub Copilot and Copilot Chat enabled.
 - Access to the Copilot Agents preview (agent mode) and MCP support.
-- Python tooling for the `analysis_mcp.server` (or adjust the MCP manifest to point to your own executable).
+- Python tooling for the `analysis.server` (or adjust the MCP manifest to point to your own executable).
 - Optional: GitHub account with Copilot subscription for collaborators.
 
 ---

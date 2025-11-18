@@ -1,4 +1,4 @@
-# analysis_mcp/server.py
+# analysis/server.py
 """
 Analysis MCP server for the agent-aided-coding-1 demo.
 
@@ -22,9 +22,9 @@ from urllib.parse import urlparse
 import requests
 import yaml
 from bs4 import BeautifulSoup
-from fastmcp import FastMCP, tool
+from fastmcp import FastMCP, tools
 
-app = FastMCP("analysis", description="Static analysis helpers for the Copilot agent demo.")
+app = FastMCP("analysis", instructions="Static analysis helpers for the Copilot agent demo.")
 
 
 # ---------------------------------------------------------------------------
@@ -222,7 +222,7 @@ def test_heuristics(diff: str, language: str | None = None) -> dict[str, Any]:
 
 def main() -> None:
     """Launch the FastMCP server."""
-    asyncio.run(app.serve())
+    asyncio.run(app.run())
 
 
 if __name__ == "__main__":

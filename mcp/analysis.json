@@ -2,10 +2,10 @@
   "$schema": "https://aka.ms/vscode-copilot-mcp-server-schema",
   "name": "analysis",
   "description": "Demo MCP server providing static analysis, OpenAPI diffs, accessibility checks, and test heuristics.",
-  "binary": "python",
+  "binary": "uv run python",
   "args": [
     "-m",
-    "analysis_mcp.server"
+    "analysis.server"
   ],
   "env": {
     "ANALYSIS_API_KEY": "${env:ANALYSIS_API_KEY:-}"

@@ -3,7 +3,7 @@
     "analysis": {
       "type": "stdio",
       "command": "uv",
-      "args": ["run", "mcp/analysis.py"]
+      "args": ["run", "python", "mcp/analysis.py"]
     }
   }
 }

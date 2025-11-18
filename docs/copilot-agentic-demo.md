@@ -70,7 +70,7 @@ Add the following snippet to your workspace `settings.json` (or adapt for user s
 
 ## MCP server bootstrap
 
-1. Ensure Python tooling for `analysis_mcp.server` is installed (or replace the `binary`/`args` with your own executable).
+1. Ensure Python tooling for `analysis.server` is installed (or replace the `binary`/`args` with your own executable).
 2. Export `ANALYSIS_API_KEY` if the analysis server requires credentials.
 3. Restart VS Code or reload the Copilot Chat view to pick up the MCP config.
 4. The tools `openapi_diff`, `a11y_audit`, and `test_heuristics` become available to agents that declare `mcp/analysis.json`.
