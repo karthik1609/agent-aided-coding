@@ -15,6 +15,7 @@ This repository is a teaching-ready monorepo that demonstrates how to combine Gi
 3. **AGENTS.md**: Start with the root `AGENTS.md`, then follow nested files (e.g., in `src/backend_loans/` and `frontend-app/`).
 4. **Custom agents**: Switch to the agents defined in `.github/agents/` (Plan, Implement, Review, Tests, Docs) from VS Code.
 5. **Prompt files**: Trigger reusable workflows with slash commands like `/new-feature-plan` using the prompt files in `.github/prompts/`.
+6. **MCP tooling & setup**: See `docs/copilot-agentic-demo.md` for the full configuration matrix, VS Code `settings.json` snippet, and the `mcp/analysis.json` example server.
 
 ## Quickstart
 ```bash
