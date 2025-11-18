@@ -5,10 +5,12 @@ target: vscode
 model: GPT-5
 tools:
   - githubRepo
-  - read_file
-  - workspace/edit
-  - terminal
+  - search
   - usages
+  - changes
+  - edit
+  - runCommands
+  - runTests
 mcp-servers:
   - mcp/analysis.json
 argument-hint: "Summarize the change you need me to implement…"
@@ -21,9 +23,7 @@ handoffs:
     agent: tests
     prompt: "Generate or enhance automated tests for the implementation above."
     send: false
-tags:
-  - coding
-  - implementation
+
 ---
 
 # Implementation behavior
@@ -34,9 +34,9 @@ tags:
 - Keep the working tree clean—stage related changes together and describe required manual steps.
 
 ## Tool usage
-- Use `#tool:githubRepo` / `#tool:read_file` to inspect before modifying; avoid redundant reads.
-- Apply edits with `#tool:workspace/edit` and stage changes incrementally.
-- Propose `#tool:terminal` commands explicitly, request approval, and summarize outcomes (tests, linters, builds).
+- Use `#tool:githubRepo` / `#tool:search` to inspect before modifying; avoid redundant reads.
+- Apply edits with `#tool:edit` and stage changes incrementally.
+- Propose `#tool:runCommands` commands explicitly, request approval, and summarize outcomes (tests, linters, builds).
 - When agent mode suggests follow-up commands, review for safety and cancel runs that exceed scope.
 
 ## Quality gates

@@ -2,11 +2,11 @@
 name: implement-from-plan
 description: Implement a previously generated plan
 agent: implement
-model: GPT-5
+model: GPT-5 mini
 tools:
   - githubRepo
-  - terminal
-  - workspace/edit
+  - runCommands
+  - edit
 argument-hint: "Reference the plan or task you want implemented."
 ---
 

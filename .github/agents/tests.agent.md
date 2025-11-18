@@ -5,15 +5,17 @@ target: vscode
 model: GPT-5
 tools:
   - githubRepo
-  - workspace/edit
   - search
-  - read_file
+  - usages
+  - edit
+  - runTests
+  - testFailure
+  - runCommands
+  -
 mcp-servers:
   - mcp/analysis.json
 argument-hint: "Tell me what code or behaviour needs test coverage…"
-tags:
-  - testing
-  - quality
+
 ---
 
 # Test behavior

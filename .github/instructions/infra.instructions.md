@@ -1,8 +1,7 @@
 ---
 name: infra-guidance
 description: Deployment and infrastructure guardrails for demo manifests.
-applyTo:
-  - infra/**
+applyTo: "infra/**"
 ---
 
 # Infra Instructions
@@ -11,5 +10,5 @@ applyTo:
 - Never commit secrets or credentials; use placeholders and reference `.env.example` if needed.
 - Ensure docker-compose scenarios map to documented commands in `README.md`; keep them aligned with backend/frontend startup instructions.
 - When changing services, update health checks and networking to match FastAPI/worker ports.
-- Use `#tool:githubRepo` for YAML manifests and `#tool:terminal` with `docker compose config` to validate syntax.
+- Use `#tool:githubRepo` for YAML manifests and `#tool:runCommands` with `docker compose config` to validate syntax.
 - The `/new-feature-plan` prompt should capture infra impacts; `/review-pr` enforces these constraints during reviews.

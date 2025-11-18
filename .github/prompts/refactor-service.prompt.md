@@ -2,10 +2,10 @@
 name: refactor-service
 description: Refactor a selected service while respecting path instructions
 agent: implement
-model: GPT-5
+model: GPT-5 mini
 tools:
   - githubRepo
-  - workspace/edit
+  - edit
 argument-hint: "Which service needs refactoring and why?"
 ---
 

@@ -5,15 +5,12 @@ target: vscode
 model: GPT-5
 tools:
   - githubRepo
-  - workspace/edit
   - search
-  - read_file
+  - edit
 mcp-servers:
   - mcp/analysis.json
 argument-hint: "Describe the documentation change you need…"
-tags:
-  - documentation
-  - communication
+
 ---
 
 # Docs behavior

@@ -3,16 +3,15 @@ name: planner
 description: High-safety planning agent that produces step-by-step implementation plans.
 argument-hint: "Describe the feature or refactor you want planned…"
 target: vscode
-model: GPT-5
+model: GPT-5 mini
 tools:
   - githubRepo
   - search
   - fetch
+  - usages
 mcp-servers:
   - mcp/analysis.json
-tags:
-  - planning
-  - architecture
+
 handoffs:
   - label: "Implement this plan"
     agent: implement

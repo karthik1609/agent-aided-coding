@@ -2,18 +2,23 @@
 name: review
 description: Code review agent focusing on correctness, security, and instruction compliance.
 target: vscode
-model: Claude-Sonnet-4.5
+model: GPT-5 mini
 tools:
   - githubRepo
   - usages
   - fetch
-  - read_file
+  - search
+  - changes
+  - runTests
+  - testFailure
 mcp-servers:
   - mcp/analysis.json
 argument-hint: "Paste a diff or describe the change you want reviewed…"
-tags:
-  - review
-  - quality-assurance
+handoffs:
+  - label: "Plan follow-up changes"
+    agent: planner
+    prompt: "Create a plan for follow-up changes based on the review findings above."
+    send: false
 ---
 
 # Review behavior

@@ -2,7 +2,7 @@
 name: new-feature-plan
 description: Plan a cross-service feature for the loan platform
 agent: planner
-model: GPT-5
+model: GPT-5 mini
 tools:
   - githubRepo
   - search

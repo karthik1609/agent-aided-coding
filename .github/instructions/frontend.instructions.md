@@ -1,8 +1,7 @@
 ---
 name: frontend-guidance
 description: UI development constraints for the React client.
-applyTo:
-  - frontend-app/**
+applyTo: "frontend-app/**"
 ---
 
 # Frontend Instructions
@@ -12,5 +11,5 @@ applyTo:
 - Align TypeScript types with backend schemas—regenerate shared DTOs or update Zod validators whenever the API changes.
 - Handle loading/error/empty states explicitly and ensure user input is validated before calling the API.
 - Extend test coverage with React Testing Library; mock network calls using MSW or local stubs.
-- Run `npm run lint` / `npm test` via `#tool:terminal` before completing tasks.
+- Run `npm run lint` / `npm test` via `#tool:runCommands` before completing tasks.
 - Use prompt `/refactor-service` for structural updates and `/write-tests` with `target=frontend` for coverage improvements.

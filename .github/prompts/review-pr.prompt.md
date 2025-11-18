@@ -2,7 +2,7 @@
 name: review-pr
 description: Structured review against project instructions
 agent: review
-model: Claude-Sonnet-4.5
+model: GPT-5 mini
 tools:
   - githubRepo
   - fetch

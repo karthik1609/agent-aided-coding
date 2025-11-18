@@ -2,10 +2,10 @@
 name: write-tests
 description: Generate or improve tests for a module
 agent: tests
-model: GPT-5
+model: GPT-5 mini
 tools:
   - githubRepo
-  - workspace/edit
+  - edit
   - search
 argument-hint: "Which module or behaviour needs automated tests?"
 ---

@@ -33,7 +33,7 @@ Demo monorepo for an LLM-assisted loan platform. The repo showcases Copilot cust
 - Provide concrete context (files, symbols, specs) and break work into verifiable steps.
 - Ask for implementation plus validation: require updated tests, logging, or docs when functionality changes.
 - Favour deterministic solutions over “clever” ones and request follow-up hardening (error handling, performance, security) when appropriate.
-- Reference context with `#file`, `#codebase`, or drag-and-drop attachments; cite instructions (e.g. `[Backend Rules](.github/instructions/backend.instructions.md)`) when relevant.
+- Reference context with `#file`, `#codebase`, or drag-and-drop attachments; cite instructions (e.g. `[Backend Rules](instructions/backend.instructions.md)`) when relevant.
 - Use prompt files (type `/` in chat) for reproducible workflows and select specialised agents from the chat picker.
 
 ## Customisation map
