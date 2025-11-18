@@ -1,1 +1,0 @@
-"""Backend loan domain package."""
